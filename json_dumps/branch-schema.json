@@ -1,0 +1,171 @@
+{
+  "type": "record",
+  "name": "WrapperTagRequestLog",
+  "namespace": "pubmatic.wrappertag",
+  "fields" : [
+    {"name": "to", "type": ["null","int"]},
+    {"name": "pubid", "type": ["null","int"]},
+    {"name": "purl", "type": ["null","string"]},
+    {"name": "tst", "type": ["null","long"]},
+    {"name": "iid", "type": ["null","string"]},
+    {"name": "pid", "type": ["null","string"]},
+    {"name": "pdvid", "type": ["null","string"]},
+    {"name": "ip", "type": ["null","string"]},
+    {"name": "ua", "type": ["null","string"]},
+    {"name": "gdpr", "type": ["null","int"], "default":null},
+    {"name": "cns", "type": ["null","string"], "default":null},
+    {"name": "pmc", "type": ["null","int"], "default":null},
+    {"name": "uid", "type": ["null","string"], "default":null},
+    {"name": "pv", "type": ["null","double"], "default":null},
+    {"name": "psl", "type": ["null","int"], "default":null},
+    {"name": "sample-mod", "type": ["null","int"], "default":null},
+    {
+      "name": "geo",
+	  "type":["null",
+	  		{
+	  			"name": "geoRecord","type": "record",
+	  			"namespace": "pubmatic.wrappertag",
+	  			"fields":  [
+ 			          			{"name": "cc", "type": ["null","string"], "default":null}
+ 			       			]
+ 			}],
+ 	   "default":null
+   	},
+    {
+      "name": "mod1",
+	  "type":["null",
+	  		{
+	  			"name": "geoRecord","type": "record",
+	  			"namespace": "pubmatic.wrappertag",
+	  			"fields":  [
+ 			          			{"name": "cc", "type": ["null","string"], "default":null}
+ 			       			]
+ 			}],
+ 	   "default":null
+   	},
+    {
+      "name": "s",
+      "type": ["null",{
+        "type": "array",
+        "items": {
+		"type": "record",
+  		"name": "slotRecord",
+		"namespace": "pubmatic.wrappertag",
+		 "fields": [
+ 			{"name": "sn", "type": ["null","string"]},
+ 			{"name": "sz", "type": ["null",{"type": "array", "items": "string"}]},
+ 			{
+                 "name":"aps",
+                 "type":["null",
+                 {
+                     "name": "appsRecord",
+                     "type": "record",
+                     "namespace":"pubmatic.wrappertag",
+                     "fields": [
+                        {"name": "mnad", "type": ["null","int"], "default":null},
+                        {"name": "mxad", "type": ["null","int"], "default":null},
+                        {"name": "amnd", "type": ["null","int"], "default":null},
+                        {"name": "amxd", "type": ["null","int"], "default":null},
+                        {"name": "exap", "type": ["null","int"], "default":null},
+                        {"name": "exip", "type": ["null","int"], "default":null}
+                     ]
+                 }],
+                 "default":null
+            },
+			{
+      				"name": "ps",
+      				"type": ["null",{
+        				"type": "array",
+        				"items": {
+						"type": "record",
+  						"name": "partnerRecord",
+						"namespace": "pubmatic.wrappertag",
+		 				"fields": [
+								{"name": "pn", "type": ["null","string"]},
+								{"name": "kgpv", "type": ["null","string"]},
+								{"name": "psz", "type": ["null","string"]},
+								{"name": "eg", "type": ["null","double"]},
+								{"name": "en", "type": ["null","double"]},
+    						    {"name": "l1", "type": ["null","int"]},
+    							{"name": "l2", "type": ["null","int"]},
+    							{"name": "t", "type": ["null","int"]},
+    							{"name": "wb", "type": ["null","int"]},
+    							{"name": "bidid", "type": ["null","string"], "default":null},
+    							{"name": "di", "type": ["null","string"], "default":null},
+    							{"name": "dc", "type": ["null","string"], "default":null},
+    							{"name": "db", "type": ["null","int"], "default":null},
+    							{"name": "ss", "type": ["null","int"], "default":null},
+    							{"name": "mi", "type": ["null","int"], "default":null},
+    							{"name": "af", "type": ["null","string"], "default":null},
+    							{"name": "piid", "type": ["null","string"], "default":null},
+    							{"name": "adsq", "type": ["null","int"], "default":null},
+    							{"name": "aprc", "type": ["null","int"], "default":null},
+    							{"name": "dur", "type": ["null","int"], "default":null},
+    							{"name": "adv", "type": ["null","string"], "default":null},
+    							{"name": "cat", "type":["null", {"type" : "array", "items" : "string"}], "default": null}
+						]
+					}
+				}]
+   			}
+		]
+	  }
+       }]
+    },
+    {
+          "name":"dvc",
+          "type":["null",
+          {
+              "name": "dvcRecord",
+              "type": "record",
+              "namespace":"pubmatic.wrappertag",
+              "fields": [
+                {"name": "plt", "type": ["null","int"], "default":null}
+              ]
+           }],
+           "default":null
+    },
+    {"name": "orig", "type": ["null","string"], "default":null},
+    {
+          "name":"aps",
+          "type":["null",
+          {
+               "name": "apsRecord",
+               "type": "record",
+               "namespace":"pubmatic.wrappertag",
+               "fields": [
+                 {"name": "cpexap", "type": ["null","int"], "default":null},
+                 {"name": "cpexip", "type": ["null","int"], "default":null},
+                 {"name": "exipw", "type": ["null","int"], "default":null},
+                 {"name": "exapw", "type": ["null","int"], "default":null}
+               ]
+          }],
+          "default":null
+    },
+    {
+          "name":"ct",
+          "type":["null",
+          {
+               "name": "ctRecord",
+               "type": "record",
+               "namespace":"pubmatic.wrappertag",
+               "fields": [
+                 {"name": "id", "type": ["null","string"], "default":null},
+                 {"name": "cat", "type":["null", {"type" : "array", "items" : "string"}], "default": null},
+                 {"name": "srs", "type": ["null","string"], "default":null},
+                 {"name": "ssn", "type": ["null","string"], "default":null},
+                 {"name": "eps", "type": ["null","int"], "default":null},
+                 {"name": "ttl", "type": ["null","string"], "default":null}
+               ]
+          }],
+          "default":null
+    },
+    {"name": "tgid", "type": ["null","int"], "default":null},
+    {"name": "au", "type": ["null","string"], "default":null},
+    {"name": "bc", "type": ["null","string"], "default":null},
+    {"name": "isDummy", "type": ["null","string"]},
+    {"name": "isBadOrCorruptRecord", "type": ["null","string"]},
+    {"name": "corruptRecord", "type": ["null","string"]},
+    {"name": "badRecord", "type": ["null","string"]},
+    {"name": "exception", "type": ["null","string"]}
+  ]
+}

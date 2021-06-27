@@ -1,0 +1,7 @@
+{
+    "master_schema_path": "json_dumps/master-schema.json",
+    "branch_schema_path": "json_dumps/branch-schema.json",
+    "flat_master_schema_path": "json_dumps/flat-master-schema.json",
+    "flat_branch_schema_path": "json_dumps/flat-branch-schema.json",
+    "diff_schema_path": "json_dumps/diff-schema.json"
+}
