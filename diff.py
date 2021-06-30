@@ -1,10 +1,11 @@
 from strategy import (Strategy, StrategyStore)
 from exceptions import EmptyDiffStrategy
-from constants import (OBJECT_PATH_SEPERATOR, ARRAY_PATH_SEPERATOR)
+from constants import (OBJECT_PATH_SEPERATOR, ARRAY_PATH_SEPERATOR, INTERMEDIATE_PERSISTENCE_STRATEGY_KEY)
 from logger import logger
+from intermediate_persistence import intermediate_persistence_store
 
 class DiffStrategy(Strategy):
-    def compute(self, master_schema, branch_schema):
+    def compute(self, master_schema, branch_schema, context):
         raise EmptyDiffStrategy("empty diff strategy provided")
 
 
@@ -13,7 +14,7 @@ class FlatCompareStrategy(DiffStrategy):
     def __init__(self):
         self.primitive_json_types = ['int', 'double', 'long', 'string', 'boolean']
 
-    def compute(self, master_schema, branch_schema):
+    def compute(self, master_schema, branch_schema, context):
 
         logger.info('using black-magic on schemas')
         path = []
@@ -25,7 +26,11 @@ class FlatCompareStrategy(DiffStrategy):
         logger.info('flattening branch schema')
         flat_branch_schema = {}
         self.flat_map(branch_schema, flat_branch_schema, path)
-        
+
+        logger.info('getting intermediate persistence strategy')
+        intermediate_persistence_strategy = intermediate_persistence_store.get(context.config[INTERMEDIATE_PERSISTENCE_STRATEGY_KEY])
+        intermediate_persistence_strategy.persist(flat_master_schema, flat_branch_schema, context)
+
         logger.info('computing the diff')
         return self.compare_flat_schema(flat_master_schema, flat_branch_schema)
 

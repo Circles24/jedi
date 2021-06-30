@@ -1,12 +1,14 @@
 {
     "master_schema_path": "json_dumps/master-schema.json",
     "branch_schema_path": "json_dumps/branch-schema.json",
-    "flat_master_schema_path": "json_dumps/flat-master-schema.json",
-    "flat_branch_schema_path": "json_dumps/flat-branch-schema.json",
     "diff_schema_path": "json_dumps/diff-schema.json",
     "common_fields_path": "json_dumps/common-fields.json",
     "missing_fields_path": "json_dumps/missing-fields.json",
     "additional_fields_path": "json_dumps/additional-fields.json",
+    "common_intermediate_path": "json_dumps/flat-schema.json",
+    "master_intermediate_path": "json_dumps/flat-master-schema.json",
+    "branch_intermediate_path": "json_dumps/flat-branch-schema.json",
     "diff_strategy": "flat_compare_strategy",
-    "persistence_strategy": "diff_files_with_array_seperation_strategy"
+    "intermediate_persistence_strategy": "diff_files_intermediate_persistence_strategy",
+    "persistence_strategy": "diff_files_with_array_seperation_no_root_strategy"
 }

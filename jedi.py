@@ -26,7 +26,7 @@ class Jedi:
         logger.info('using black-magic on schemas')
         
         logger.info('computing diff')
-        common_fields, missing_fields, additional_fields = self.context.diff_strategy.compute(self.master_schema, self.branch_schema)
+        common_fields, missing_fields, additional_fields = self.context.diff_strategy.compute(self.master_schema, self.branch_schema, self.context)
         logger.info('computed the diff')
 
         logger.info('persisting the result')
