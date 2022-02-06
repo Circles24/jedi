@@ -1,11 +1,16 @@
 import json
+
+from exceptions import InvalidIntermediatePersistenceStrategy
 from strategy import (Strategy, StrategyStore)
-from constants import (JSON_INDENT, COMMON_INTERMEDIATE_PATH_KEY, MASTER_INTERMEDIATE_PATH_KEY, BRANCH_INTERMEDIATE_PATH_KEY)
+from constants import (JSON_INDENT, COMMON_INTERMEDIATE_PATH_KEY, MASTER_INTERMEDIATE_PATH_KEY,
+                       BRANCH_INTERMEDIATE_PATH_KEY)
 from logger import logger
 
+
 class IntermediatePersistenceStrategy(Strategy):
-    def persist(self, flat_master_schema, flat_branch_schema):
+    def persist(self, flat_master_schema, flat_branch_schema, context):
         raise InvalidIntermediatePersistenceStrategy
+
 
 class CommonFileIntermediatePersistenceStrategy(IntermediatePersistenceStrategy):
     def persist(self, flat_master_schema, flat_branch_schema, context):
@@ -13,7 +18,7 @@ class CommonFileIntermediatePersistenceStrategy(IntermediatePersistenceStrategy)
 
         flat_common_path = context.config[COMMON_INTERMEDIATE_PATH_KEY]
         logger.info(f'persisting flat common schema in {flat_common_path}')
-        common_flat_schema = {"flat_master_schema":flat_master_schema, "flat_branch_schema":flat_branch_schema}
+        common_flat_schema = {"flat_master_schema": flat_master_schema, "flat_branch_schema": flat_branch_schema}
         with open(flat_common_path, 'w') as file_store:
             file_store.write(json.dumps(common_flat_schema, indent=JSON_INDENT))
 
@@ -42,6 +47,7 @@ class DiffFilesIntermediatePersistenceStrategy(IntermediatePersistenceStrategy):
 class NoIntermediatePersistenceStrategy(IntermediatePersistenceStrategy):
     def persist(self, flat_master_schema, flat_branch_schema, context):
         pass
+
     def get_name(self):
         return 'no_intermediate_persistence_strategy'
 

@@ -18,7 +18,10 @@
     "WrapperTagRequestLog.|.sub_additional_field.kim": "double",
     "WrapperTagRequestLog.geo.geoRecord.cc": "string",
     "WrapperTagRequestLog.s.|.slotRecord.sn": "string",
-    "WrapperTagRequestLog.s.|.slotRecord.sz.|": "string",
+    "WrapperTagRequestLog.s.|.slotRecord.sz": {
+        "type": "array",
+        "items": "string"
+    },
     "WrapperTagRequestLog.s.|.slotRecord.aps.appsRecord.mnad": "int",
     "WrapperTagRequestLog.s.|.slotRecord.aps.appsRecord.mxad": "int",
     "WrapperTagRequestLog.s.|.slotRecord.aps.appsRecord.amnd": "int",
@@ -46,7 +49,10 @@
     "WrapperTagRequestLog.s.|.slotRecord.ps.|.partnerRecord.aprc": "int",
     "WrapperTagRequestLog.s.|.slotRecord.ps.|.partnerRecord.dur": "int",
     "WrapperTagRequestLog.s.|.slotRecord.ps.|.partnerRecord.adv": "string",
-    "WrapperTagRequestLog.s.|.slotRecord.ps.|.partnerRecord.cat.|": "string",
+    "WrapperTagRequestLog.s.|.slotRecord.ps.|.partnerRecord.cat": {
+        "type": "array",
+        "items": "string"
+    },
     "WrapperTagRequestLog.dvc.dvcRecord.plt": "int",
     "WrapperTagRequestLog.orig": "string",
     "WrapperTagRequestLog.aps.apsRecord.cpexap": "int",
@@ -54,7 +60,10 @@
     "WrapperTagRequestLog.aps.apsRecord.exipw": "int",
     "WrapperTagRequestLog.aps.apsRecord.exapw": "int",
     "WrapperTagRequestLog.ct.ctRecord.id": "string",
-    "WrapperTagRequestLog.ct.ctRecord.cat.|": "string",
+    "WrapperTagRequestLog.ct.ctRecord.cat": {
+        "type": "array",
+        "items": "string"
+    },
     "WrapperTagRequestLog.ct.ctRecord.srs": "string",
     "WrapperTagRequestLog.ct.ctRecord.ssn": "string",
     "WrapperTagRequestLog.ct.ctRecord.eps": "int",

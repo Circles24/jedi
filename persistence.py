@@ -1,7 +1,7 @@
 import json
 from strategy import (Strategy, StrategyStore)
 from logger import logger
-from constants import (ARRAY_PATH_SEPERATOR, OBJECT_PATH_SEPERATOR, JSON_INDENT)
+from constants import (ARRAY_PATH_SEPARATOR, OBJECT_PATH_SEPARATOR, JSON_INDENT)
 
 class PersistenceStrategy(Strategy):
     def persist(self, common_fields, missing_fields, additional_fields, context):
@@ -97,12 +97,12 @@ class DiffFilesArraySeperationStrategy(PersistenceStrategy):
         return filtered_fields
 
     def is_array_field(self, path):
-        return ARRAY_PATH_SEPERATOR in path
+        return ARRAY_PATH_SEPARATOR in path
 
     def get_file_name_and_key(self, path):
-        path_list = path.split(ARRAY_PATH_SEPERATOR)
+        path_list = path.split(ARRAY_PATH_SEPARATOR)
         key = path_list.pop()
-        file_name = ARRAY_PATH_SEPERATOR.join(path_list)
+        file_name = ARRAY_PATH_SEPARATOR.join(path_list)
         return file_name, key
 
     def get_name(self):
@@ -144,8 +144,8 @@ class DiffFilesArraySeperationNoRootStrategy(PersistenceStrategy):
     def strip_root(self, fields):
         stripped_fields = {}
         for key, value in fields.items():
-            key = key.strip(OBJECT_PATH_SEPERATOR)
-            stripped_key = OBJECT_PATH_SEPERATOR.join(key.split(OBJECT_PATH_SEPERATOR)[1::])
+            key = key.strip(OBJECT_PATH_SEPARATOR)
+            stripped_key = OBJECT_PATH_SEPARATOR.join(key.split(OBJECT_PATH_SEPARATOR)[1::])
             stripped_fields[stripped_key] = value
         return stripped_fields
 
@@ -165,12 +165,12 @@ class DiffFilesArraySeperationNoRootStrategy(PersistenceStrategy):
         return filtered_fields
 
     def is_array_field(self, path):
-        return ARRAY_PATH_SEPERATOR in path
+        return ARRAY_PATH_SEPARATOR in path
 
     def get_file_name_and_key(self, path):
-        path_list = path.split(ARRAY_PATH_SEPERATOR)
+        path_list = path.split(ARRAY_PATH_SEPARATOR)
         key = path_list.pop()
-        file_name = ARRAY_PATH_SEPERATOR.join(path_list)
+        file_name = ARRAY_PATH_SEPARATOR.join(path_list)
         return file_name, key
 
     def get_name(self):

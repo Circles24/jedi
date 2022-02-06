@@ -1,5 +1,7 @@
 class Strategy:
-    pass
+    def get_name(self):
+        pass
+
 
 class StrategyStore:
 
@@ -11,4 +13,4 @@ class StrategyStore:
         self.store[strategy.get_name()] = strategy
 
     def get(self, key):
-        return self.store[key]
+        return self.store.get(key)
